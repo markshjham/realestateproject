@@ -29,7 +29,11 @@ def showIndex():
 @app.route('/property/new', methods = ['GET', 'POST'])
 def addProperty():
     if request.method == 'POST':
-        newListing = Property(address = request.form['address'], price = request.form['price'], description = request.form['description'], bathroom = request.form['bathroom'], bedroom = request.form['bathroom'], sqft = request.form['sqft'], rentOrSale = request.form['rentOrSale'])
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % request.form['address']
+        result = requests.get(url).json()
+        lat = result["results"][0]["geometry"]["location"]["lat"]
+        lng = result["results"][0]["geometry"]["location"]["lng"]
+        newListing = Property(address = request.form['address'], price = request.form['price'], description = request.form['description'], bathroom = request.form['bathroom'], bedroom = request.form['bathroom'], sqft = request.form['sqft'], rentOrSale = request.form['rentOrSale'], lat = lat, lng = lng)
         session.add(newListing)
         try:
             session.commit()
@@ -85,15 +89,9 @@ def deleteProperty(property_id):
     
 @app.route('/map')
 def propertyMap():
-    properties = session.query(Property)
+    properties = session.query(Property).order_by(asc(Property.id))
     return render_template('propertyMap.html', properties=properties)
     
-@app.route('/regmap')
-def regMap():
-    properties = session.query(Property)
-    return render_template('regMap.html', properties=properties)
-    
-
 
 if __name__ == '__main__':
     app.debug = True

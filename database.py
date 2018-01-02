@@ -14,6 +14,8 @@ class Property(Base):
     bedroom = Column(Integer, nullable=False)
     bathroom = Column(Integer, nullable=False)
     sqft = Column(Integer)
+    lat = Column(Integer, nullable=False)
+    lng = Column(Integer, nullable=False)
 
 engine = create_engine('sqlite:///propertylisting.db')
 
