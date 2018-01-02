@@ -13,7 +13,6 @@ import os
 
 app = Flask(__name__)
 
-# Connect to Database and create database session
 engine = create_engine('sqlite:///propertylisting.db')
 Base.metadata.bind = engine
 
@@ -21,7 +20,6 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-# Create anti-forgery state token
 @app.route('/')
 @app.route('/property')
 def showIndex():
@@ -85,6 +83,18 @@ def deleteProperty(property_id):
     else:
         return render_template('deleteProperty.html', property=property)
     
+@app.route('/map')
+def propertyMap():
+    properties = session.query(Property)
+    return render_template('propertyMap.html', properties=properties)
+    
+@app.route('/regmap')
+def regMap():
+    properties = session.query(Property)
+    return render_template('regMap.html', properties=properties)
+    
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
