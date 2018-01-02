@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+	<h1>{{property.address}}</h1>
+	<img src="https://maps.googleapis.com/maps/api/streetview?location={{property.address}}&size=800x400">
+    <h2>price: ${{property.price}}</h2>
+    <p>{{property.description}}</p>
+    <h3>bedroom: {{property.bedroom}}</h3>
+    <h3>bathroom: {{property.bathroom}}</h3>
+    <h3>sqft: {{property.sqft}}</h3>
+    <h3>For {{property.rentOrSale}}</h3>
+    <a href={{url_for('editProperty', property_id=property.id)}}>Edit property info</a>
+    </br>
+    <a href={{url_for('deleteProperty', property_id=property.id)}}>Delete property</a>
+    </br>
+    <a href={{url_for('showIndex')}}>Return to listings</a>
+{% endblock %}
