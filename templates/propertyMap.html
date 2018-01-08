@@ -5,9 +5,15 @@
     var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+        center: {lat: {{ properties[0].lat }}, lng: {{ properties[0].lng }}},
+        zoom: 13
       });
+      {% for property in properties %}
+        var marker = new google.maps.Marker({
+          position: {lat: {{ property.lat }}, lng: {{ property.lng }}},
+          map: map
+        });
+      {% endfor %}
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4&callback=initMap" async defer></script>

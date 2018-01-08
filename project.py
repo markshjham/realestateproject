@@ -58,6 +58,12 @@ def editProperty(property_id):
     if request.method == 'POST':
         if request.form['address']:
             editedProperty.address = request.form['address']
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % request.form['address']
+            result = requests.get(url).json()
+            lat = result["results"][0]["geometry"]["location"]["lat"]
+            lng = result["results"][0]["geometry"]["location"]["lng"]
+            editedProperty.lat = lat
+            editedProperty.lng = lng
         if request.form['price']:
             editedProperty.price = request.form['price']
         if request.form['description']:
@@ -89,7 +95,7 @@ def deleteProperty(property_id):
     
 @app.route('/map')
 def propertyMap():
-    properties = session.query(Property).order_by(asc(Property.id))
+    properties = session.query(Property).all()
     return render_template('propertyMap.html', properties=properties)
     
 
