@@ -29,11 +29,11 @@ def showIndex():
 @app.route('/property/new', methods = ['GET', 'POST'])
 def addProperty():
     if request.method == 'POST':
-        url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % request.form['address']
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % (request.form['addressStreet'], request.form['addressCity'])
         result = requests.get(url).json()
         lat = result["results"][0]["geometry"]["location"]["lat"]
         lng = result["results"][0]["geometry"]["location"]["lng"]
-        newListing = Property(address = request.form['address'], price = request.form['price'], description = request.form['description'], bathroom = request.form['bathroom'], bedroom = request.form['bathroom'], sqft = request.form['sqft'], rentOrSale = request.form['rentOrSale'], lat = lat, lng = lng)
+        newListing = Property(addressStreet = request.form['addressStreet'], addressCity = request.form['addressCity'], price = request.form['price'], description = request.form['description'], bathroom = request.form['bathroom'], bedroom = request.form['bathroom'], sqft = request.form['sqft'], rentOrSale = request.form['rentOrSale'], lat = lat, lng = lng)
         session.add(newListing)
         try:
             session.commit()
@@ -56,9 +56,10 @@ def showProperty(property_id):
 def editProperty(property_id):
     editedProperty = session.query(Property).filter_by(id=property_id).one()
     if request.method == 'POST':
-        if request.form['address']:
-            editedProperty.address = request.form['address']
-            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % request.form['address']
+        if request.form['addressStreet'] or request.form['addressCity']:
+            editedProperty.addressStreet = request.form['addressStreet']
+            editedProperty.addressCity = request.form['addressCity']
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s%s&key=AIzaSyBqZCucdDP73iaYpJV12x1kyUvXtAD9lO4' % (request.form['addressStreet'], request.form['addressCity'])
             result = requests.get(url).json()
             lat = result["results"][0]["geometry"]["location"]["lat"]
             lng = result["results"][0]["geometry"]["location"]["lng"]

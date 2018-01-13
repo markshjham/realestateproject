@@ -7,7 +7,8 @@ Base = declarative_base()
 class Property(Base):
     __tablename__ = 'property'
     id = Column(Integer, primary_key=True)
-    address = Column(String(250), nullable=False)
+    addressStreet = Column(String(250), nullable=False)
+    addressCity = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
     price = Column(Integer, nullable=False)
     rentOrSale = Column(Integer, nullable=False)
