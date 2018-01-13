@@ -1,6 +1,10 @@
 {% extends "main.html" %}
-{% block script %}
+{% block content %}
   <div id="map"></div>
+  </br>
+  <a href={{url_for('showIndex')}}>show list</a>
+{% endblock %}
+{% block script %}
   <script>
     var map;
     function initMap() {
