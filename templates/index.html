@@ -2,7 +2,7 @@
 {% block content %}
 	{% for property in properties %}
 			<a href={{url_for('showProperty', property_id = property.id)}}>
-				<div class="row-container">
+				<div class="row-container listing-row">
 					<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=100x100" class="grid-image">
 				    <div class="grid-text">
 					    <h2>{{ property.addressStreet }}</h2>

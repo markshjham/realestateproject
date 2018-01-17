@@ -1,35 +1,37 @@
 {% extends "main.html" %}
 {% block content %}
 	<h1>Edit Property</h1>
-	<form action="#" method = "post">
-		<label for="addressStreet">Street Address:</label>
-		<input type="text" maxlength="100" name="addressStreet" placeholder="Street Address">
-		
-		<label for="addressCity">City, State</label>
-		<input type="text" maxlength="100" name="addressCity" placeholder="City, State">
-
-		<label for="description">Description:</label>
-		<textarea maxlength="250" rows="3" name="description" placeholder="Description"></textarea>
-
-		<label for="price">Price:</label>
-			$<input type ="text" maxlength="12" name="price" placeholder="Price">
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="rentOrSale" id="course1" value="Rent" {% if property.rentOrSale == 'Rent' %}checked{% endif %}>Rent
-		  </label>
-		</div>
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="rentOrSale" id="course2" value="Sale" {% if property.rentOrSale == 'Sale' %}checked{% endif %}>Sale
-		  </label>
-		</div>
-		<label for="bedroom"># of Bedroom:</label>
-		<input type ="text" maxlength="100" name="bedroom" placeholder="Bedroom">
-		<label for="bathroom"># of Bathroom:</label>
-		<input type ="text" maxlength="100" name="bathroom" placeholder="Bathroom">
-		<label for="sqft">sqft:</label>
-		<input type ="text" maxlength="100" name="sqft" placeholder="sqft">
-		<button type="submit" id="submit" type="submit">Create</button>
+	<form class="property-form" action="#" method = "post">
+		<fieldset>
+			<label for="addressStreet">Street Address:</label>
+			<input type="text" maxlength="100" name="addressStreet" value="{{ property.addressStreet }}">
+			
+			<label for="addressCity">City, State</label>
+			<input type="text" maxlength="100" name="addressCity" value="{{ property.addressCity }}">
+	
+			<label for="description">Description:</label>
+			<textarea maxlength="250" rows="3" name="description">{{ property.description }}</textarea>
+	
+			<label for="price">Price:</label>
+				$<input type ="text" maxlength="12" name="price" value="{{ property.price }}">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="rentOrSale" id="course1" value="Rent" {% if property.rentOrSale == 'Rent' %}checked{% endif %}>Rent
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="rentOrSale" id="course2" value="Sale" {% if property.rentOrSale == 'Sale' %}checked{% endif %}>Sale
+			  </label>
+			</div>
+			<label for="bedroom"># of Bedroom:</label>
+			<input type ="text" maxlength="100" name="bedroom" value="{{ property.bedroom }}">
+			<label for="bathroom"># of Bathroom:</label>
+			<input type ="text" maxlength="100" name="bathroom" value="{{ property.bathroom }}">
+			<label for="sqft">sqft:</label>
+			<input type ="text" maxlength="100" name="sqft" value="{{ property.sqft }}">
+			<button type="submit" id="submit" type="submit">Update</button>
+		</fieldset>
 	</form>
 	<div>
 	    <a href={{url_for('showProperty', property_id=property.id)}}>Return to property</a>
@@ -37,3 +39,4 @@
 		<a href={{url_for('showIndex')}}>Return to listings</a>
 	</div>
 {% endblock %}
+

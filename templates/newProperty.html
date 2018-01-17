@@ -1,38 +1,40 @@
 {% extends "main.html" %}
 {% block content %}
 	<h1>New Property</h1>
-	<form action="#" method = "post">
-		<label for="addressStreet">Street Address: </label>
-		<input type="text" maxlength="100" name="addressStreet" placeholder="Street Address">
-		</br>
-		<label for="addressCity">City, State: </label>
-		<input type="text" maxlength="100" name="addressCity" placeholder="City, State">
-		</br>
-		<label for="description">Description: </label>
-		<textarea maxlength="250" rows="3" name="description" placeholder="Description"></textarea>
-		</br>
-		<label for="price">Price:</label>
-			$<input type ="text" maxlength="12" name="price" placeholder="Price">
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="rentOrSale" id="course1" value="Rent">Rent
-		  </label>
-		</div>
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="rentOrSale" id="course2" value="Sale">Sale
-		  </label>
-		</div>
-		<label for="bedroom"># of Bedroom:</label>
-		<input type ="text" maxlength="100" name="bedroom" placeholder="Bedroom">
-		</br>
-		<label for="bathroom"># of Bathroom:</label>
-		<input type ="text" maxlength="100" name="bathroom" placeholder="Bathroom">
-		</br>
-		<label for="sqft">sqft:</label>
-		<input type ="text" maxlength="100" name="sqft" placeholder="sqft">
-		</br>
-		<button type="submit" id="submit" type="submit">Create</button>
+	<form class="property-form" action="#" method = "post">
+		<fieldset>
+			<label for="addressStreet">Street Address: </label>
+			<input type="text" maxlength="100" name="addressStreet" placeholder="Street Address">
+			</br>
+			<label for="addressCity">City, State: </label>
+			<input type="text" maxlength="100" name="addressCity" placeholder="City, State">
+			</br>
+			<label for="description">Description: </label>
+			<textarea maxlength="250" rows="3" name="description" placeholder="Description"></textarea>
+			</br>
+			<label for="price">Price:</label>
+				<input type ="text" maxlength="12" name="price" placeholder="Price">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="rentOrSale" id="course1" value="Rent">Rent
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="rentOrSale" id="course2" value="Sale">Sale
+			  </label>
+			</div>
+			<label for="bedroom"># of Bedroom:</label>
+			<input type ="text" maxlength="100" name="bedroom" placeholder="Bedroom">
+			</br>
+			<label for="bathroom"># of Bathroom:</label>
+			<input type ="text" maxlength="100" name="bathroom" placeholder="Bathroom">
+			</br>
+			<label for="sqft">sqft:</label>
+			<input type ="text" maxlength="100" name="sqft" placeholder="sqft">
+			</br>
+			<button type="submit" id="submit" type="submit">Create</button>
+		</fieldset>
 	</form>
 	<div>
 		<a href={{url_for('showIndex')}}>Return to listings</a>
