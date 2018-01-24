@@ -3,6 +3,7 @@
 	<h1>{{ property.addressStreet }}</h1>
 	<h1>{{ property.addressCity }}</h1>
 	<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=800x400">
+    <iframe class="embed-map" src="https://www.google.com/maps/embed/v1/place?q={{ property.addressStreet }} {{ property.addressCity }}&key=AIzaSyDep5TofNfC-U14bGwJGbfwZ879kszQHBY"></iframe>
     <h2>price: ${{ property.price }}</h2>
     <p>{{ property.description }}</p>
     <h3>bedroom: {{ property.bedroom }}</h3>

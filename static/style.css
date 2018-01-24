@@ -8,14 +8,14 @@ h1 {
 }
 
 #map {
-    height: 800px;
+    height: 700px;
     width: 100%;
 }
 
 .grid-container {
     display: grid;
     grid-template-areas: auto;
-    grid-gap: 20px;
+    grid-row-gap: 20px;
     width: 80%;
     margin: auto;
 }
@@ -30,11 +30,15 @@ h1 {
     grid-area: 'main';
 }
 
+.search {
+    grid-area: 'search';
+}
+
 .row-container {
     display: grid;
     grid-gap: 20px;
     grid-template-areas: 'grid-image grid-text';
-    grid-template-columns: 100px auto;
+    grid-template-columns: 300px auto;
     width: 80%;
     margin: auto;
 }
@@ -106,5 +110,11 @@ h1 {
 .listing-row {
     border: 2px solid #e7ff8c;
     border-radius: 10px;
+    margin-bottom: 10px;
     
+}
+
+.embed-map {
+    width: 400px;
+    height: 400px;
 }

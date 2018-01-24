@@ -99,6 +99,10 @@ def propertyMap():
     properties = session.query(Property).all()
     return render_template('propertyMap.html', properties=properties)
     
+@app.route('/search', methods = ['POST'])
+def search():
+    result = session.query(Property).filter_by(addressStreet=request.form['address'])
+    return render_template('searchResult.html', properties=result)
 
 if __name__ == '__main__':
     app.debug = True
