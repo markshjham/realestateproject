@@ -1,3 +1,7 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
 a {
     text-decoration: none;
     color: #353535;
@@ -34,21 +38,41 @@ h1 {
     grid-area: 'search';
 }
 
-.row-container {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-areas: 'grid-image grid-text';
-    grid-template-columns: 300px auto;
-    width: 80%;
+.search form {
+    width: 100%;
     margin: auto;
 }
-
-.grid-image {
-    grid-area: 'grid-image';
+.search input {
+    width: 70%;
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    background-color: #e8eeef;
+    color: black;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
 }
 
-.grid-text {
-    grid-area: 'grid-text';
+.search button {
+    padding: 15px;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 25%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.listing-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
 }
 
 .property-form {
@@ -62,7 +86,6 @@ h1 {
 }
 
 .property-form input[type="text"], textarea {
-    
     border: none;
     font-size: 16px;
     height: auto;
@@ -89,29 +112,22 @@ h1 {
 }
 
 .property-form button {
-  padding: 19px 39px 18px 39px;
-  color: #FFF;
-  background-color: #4bc970;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-  width: 100%;
-  border: 1px solid #3ac162;
-  border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-  margin-bottom: 10px;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    margin-bottom: 10px;
 }
 
 .property-form fieldset {
     border: none;
-}
-
-.listing-row {
-    border: 2px solid #e7ff8c;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    
 }
 
 .embed-map {

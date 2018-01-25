@@ -1,18 +1,16 @@
 {% extends "main.html" %}
 {% block content %}
-	{% for property in properties %}
+	<div class="listing-container">
+		{% for property in properties %}
 			<a href={{url_for('showProperty', property_id = property.id)}}>
-				<div class="row-container listing-row">
-					<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=300x250" class="grid-image">
-				    <div class="grid-text">
-					    <h2>{{ property.addressStreet }}</h2>
-					    <h3>price: ${{ '{:20,.2f}'.format(property.price) }}</h3>
-			    	</div>
-				</div>
+				<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=300x250" class="grid-image">
+			    <h2>{{ property.addressStreet }}</h2>
+			    <h3>price: ${{ '{:20,.2f}'.format(property.price) }}</h3>
 		    </a>
-	{% endfor %}
+		{% endfor %}
+	</div>
 	</br>
-	<a href={{url_for('addProperty')}}>add new property</a>
+	<a href={{ url_for('addProperty') }}>add new property</a>
 	</br>
-	<a href={{url_for('propertyMap')}}>show map</a>
+	<a href={{ url_for('propertyMap') }}>show map</a>
 {% endblock %}
