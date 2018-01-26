@@ -2,10 +2,11 @@
 {% block content %}
 	<h1>{{ property.addressStreet }}</h1>
 	<h1>{{ property.addressCity }}</h1>
+	<h2>price: ${{ '{:20,}'.format(property.price) }}</h2>
 	<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=800x400">
     <iframe class="embed-map" src="https://www.google.com/maps/embed/v1/place?q={{ property.addressStreet }} {{ property.addressCity }}&key=AIzaSyDep5TofNfC-U14bGwJGbfwZ879kszQHBY"></iframe>
-    <h2>price: ${{ property.price }}</h2>
-    <p>{{ property.description }}</p>
+    <h3>Description<hr></h3>
+    <div class="description">{{ property.description }}</div>
     <h3>bedroom: {{ property.bedroom }}</h3>
     <h3>bathroom: {{ property.bathroom }}</h3>
     <h3>sqft: {{ property.sqft }}</h3>

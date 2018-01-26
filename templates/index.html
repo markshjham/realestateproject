@@ -2,11 +2,13 @@
 {% block content %}
 	<div class="listing-container">
 		{% for property in properties %}
-			<a href={{url_for('showProperty', property_id = property.id)}}>
-				<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=300x250" class="grid-image">
-			    <h2>{{ property.addressStreet }}</h2>
-			    <h3>price: ${{ '{:20,.2f}'.format(property.price) }}</h3>
-		    </a>
+			<div class="listing-item">
+				<a href={{url_for('showProperty', property_id = property.id)}}>
+					<img src="https://maps.googleapis.com/maps/api/streetview?location={{ property.addressStreet }} {{ property.addressCity }}&size=300x250" class="grid-image">
+				    <h2>{{ property.addressStreet }}</h2>
+				    <h3>price: ${{ '{:20,}'.format(property.price) }}</h3>
+			    </a>
+		    </div>
 		{% endfor %}
 	</div>
 	</br>

@@ -34,14 +34,26 @@ h1 {
     grid-area: 'main';
 }
 
+.listing-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    grid-gap: 20px;
+}
+
+.listing-item {
+}
+
 .search {
     grid-area: 'search';
+    margin-bottom: 18px;
 }
 
 .search form {
     width: 100%;
     margin: auto;
 }
+
 .search input {
     width: 70%;
     border: none;
@@ -67,12 +79,6 @@ h1 {
     border: 1px solid #3ac162;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-}
-
-.listing-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: space-evenly;
 }
 
 .property-form {
@@ -133,4 +139,22 @@ h1 {
 .embed-map {
     width: 400px;
     height: 400px;
+}
+
+@media screen and (max-width: 900px) {
+    .grid-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .listing-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .listing-container {
+        grid-template-columns: auto;
+    }
 }
